@@ -1,0 +1,1 @@
+# Elasticsearch C++ client
