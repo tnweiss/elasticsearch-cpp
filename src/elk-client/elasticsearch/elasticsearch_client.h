@@ -1,0 +1,64 @@
+//
+// Created by tnwei on 1/8/2022.
+//
+
+#ifndef ELASTICSEARCH_CPP_SRC_ELASTICSEARCH_CLIENT_ELASTIC_CLIENT_H_
+#define ELASTICSEARCH_CPP_SRC_ELASTICSEARCH_CLIENT_ELASTIC_CLIENT_H_
+
+#include "string"
+#include "common/authentication.h"
+
+#include "elasticsearch/models/cluster_details.h"
+
+namespace elk {
+
+static const char* DEFAULT_ORIGIN = "http://localhost:9200";
+
+class ElasticsearchClient {
+ public:
+  /**
+   * Default constructor, configure for default origin and no auth
+   */
+  ElasticsearchClient();
+
+  /**
+   * Constructor that overrides the origin
+   * @param origin origin of the elastic server
+   */
+  explicit ElasticsearchClient(const char* origin);
+
+  /**
+   * Constructor that overrides the authenticaiton
+   * @param authentication
+   */
+  explicit ElasticsearchClient(const elk::ElkAuthentication& authentication);
+
+  /**
+   * Initialize the client with an origin and auth
+   * @param origin
+   * @param authentication
+   */
+  ElasticsearchClient(const char* origin, const elk::ElkAuthentication&  authentication);
+
+  /**
+   * Get cluster details
+   * @return
+   */
+  [[nodiscard]] ClusterDetails get_cluster_details() const;
+
+  /**
+   * Check to see that the target index exists
+   * https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-exists.html
+   * @param target
+   * @return
+   */
+  bool index_exists(const char* target) const;
+
+ private:
+  const std::string _origin;
+  const elk::ElkAuthentication& _authentication;
+};
+}
+
+
+#endif //ELASTICSEARCH_CPP_SRC_ELASTICSEARCH_CLIENT_ELASTIC_CLIENT_H_
