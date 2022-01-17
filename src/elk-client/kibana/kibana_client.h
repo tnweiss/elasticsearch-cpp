@@ -49,6 +49,20 @@ class KibanaClient {
   std::unique_ptr<CreateSavedObjectResponse> create_saved_object(SavedObjectType type, const char* id,
                                                                   const CreateSavedObjectBody& body) const;
 
+  /**
+   * Delete a Saved Object
+   * @param body
+   * @return
+   */
+  void delete_saved_object(SavedObjectType type, const char* id) const;
+
+  /**
+   * Returns true if a saved object exists
+   * @param body
+   * @return
+   */
+  bool saved_object_exists(SavedObjectType type, const char* id) const;
+
  private:
   const std::string _origin;
   const elk::ElkAuthentication& _authentication;

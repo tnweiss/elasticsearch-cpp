@@ -28,4 +28,22 @@ std::unique_ptr<elk::CreateSavedObjectResponse> create_saved_object_action(const
                                                      const CreateSavedObjectBody& body);
 }
 
+/**
+ *
+ * @param origin
+ * @param authentication
+ * @param id
+ */
+void delete_saved_object_action(const std::string& origin, const elk::ElkAuthentication& authentication,
+                                elk::SavedObjectType type, const char* id);
+
+/**
+ *
+ * @param origin
+ * @param authentication
+ * @param id
+ */
+bool saved_object_exists_action(const std::string& origin, const elk::ElkAuthentication& authentication,
+                                elk::SavedObjectType type, const char* id);
+
 #endif //ELK_CPP_CLIENT_SRC_ELK_CLIENT_KIBANA_ACTIONS_SAVED_OBJECT_H_

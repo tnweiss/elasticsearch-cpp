@@ -21,3 +21,11 @@ std::unique_ptr<elk::CreateSavedObjectResponse> elk::KibanaClient::create_saved_
                                                                                         const elk::CreateSavedObjectBody &body) const {
   return create_saved_object_action(_origin, _authentication, type, id, body);
 }
+
+void elk::KibanaClient::delete_saved_object(elk::SavedObjectType type, const char *id) const {
+  return delete_saved_object_action(_origin, _authentication, type, id);
+}
+
+bool elk::KibanaClient::saved_object_exists(elk::SavedObjectType type, const char *id) const {
+  return saved_object_exists_action(_origin, _authentication, type, id);
+}
