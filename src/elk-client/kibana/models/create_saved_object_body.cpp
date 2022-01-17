@@ -3,6 +3,7 @@
 //
 
 #include "create_saved_object_body.h"
+#include "common/keys.h"
 
 elk::SavedObjectAttributes elk::CreateSavedObjectBody::attributes() const {
   return get_object<SavedObjectAttributes>(ATTRIBUTES);

@@ -9,13 +9,8 @@
 #include "kibana/models/saved_object_attributes.h"
 
 namespace elk {
-
-//////////////////////////////////////////////////////// KEYS ////////////////////////////////////////////////////////
-static const char* ATTRIBUTES = "attributes";
-static const char* REFERENCES = "references";
-static const char* INDEX_PATTERN = "initialNamespaces";
-
-class CreateSavedObjectBody: Model {
+class CreateSavedObjectBody: public Model {
+ public:
   //////////////////////////////////////////////////// CONSTRUCTORS ////////////////////////////////////////////////////
   explicit CreateSavedObjectBody(std::string& response): Model(response) {}
 
@@ -27,7 +22,6 @@ class CreateSavedObjectBody: Model {
   [[nodiscard]] SavedObjectAttributes attributes() const;
 
   void attributes(SavedObjectAttributes& attributes) const;
-
 };
 }
 

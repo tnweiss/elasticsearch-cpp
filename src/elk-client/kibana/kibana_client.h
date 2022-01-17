@@ -7,6 +7,9 @@
 
 #include "string"
 #include "common/authentication.h"
+#include "kibana/models/create_saved_object_body.h"
+#include "kibana/models/create_saved_object_response.h"
+#include "kibana/models/saved_object_type.h"
 
 namespace elk {
 
@@ -37,6 +40,14 @@ class KibanaClient {
    * @param authentication
    */
   KibanaClient(const char* origin, const elk::ElkAuthentication&  authentication);
+
+  /**
+   * Create Saved Object
+   * @param body
+   * @return
+   */
+  std::unique_ptr<CreateSavedObjectResponse> create_saved_object(SavedObjectType type, const char* id,
+                                                                  const CreateSavedObjectBody& body) const;
 
  private:
   const std::string _origin;

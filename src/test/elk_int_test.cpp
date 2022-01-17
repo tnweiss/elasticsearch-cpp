@@ -5,6 +5,7 @@
 #define CATCH_CONFIG_MAIN
 #include "catch2.hpp"
 
+#include "kibana/models/saved_object_type.h"
 #include "common/authentication.h"
 #include "elasticsearch/elasticsearch_client.h"
 #include "kibana/kibana_client.h"
@@ -29,6 +30,13 @@ static const char* INDEX_REQUEST_BODY = R"(
   }
 }
 )";
+static const char* INDEX_PATTERN_REQUEST_BODY = R"(
+{
+  "attributes": {
+    "title": "elk-cpp-test-index-*"
+  }
+}
+)";
 
 TEST_CASE("ElasticsearchClientTest") {
   // create the clients
@@ -43,6 +51,9 @@ TEST_CASE("ElasticsearchClientTest") {
   // create the test index
   std::string test_index(INDEX_NAME );
   test_index.append(std::to_string(currentSeconds));
+
+  // create test index pattern
+  std::string test_index_pattern(INDEX_NAME);
 
   SECTION("ClusterDetails") {
     REQUIRE(elastic_client.get_cluster_details().name() == TESTBED_NAME);
@@ -59,9 +70,14 @@ TEST_CASE("ElasticsearchClientTest") {
     REQUIRE(elastic_client.index_exists(test_index.c_str()));
   }
 
-//  SECTION("CreateIndexPattern") {
-//
-//  }
+  SECTION("CreateIndexPattern") {
+    std::string create_index_pattern_body_str(INDEX_PATTERN_REQUEST_BODY);
+    elk::CreateSavedObjectBody create_index_pattern_body(create_index_pattern_body_str);
+
+    auto resp = kibana_client.create_saved_object(elk::SavedObjectType::INDEX_PATTERN,
+                                                            test_index_pattern.c_str(),
+                                                          create_index_pattern_body);
+  }
 
   SECTION("DeleteIndex") {
     elastic_client.delete_index(test_index.c_str());
