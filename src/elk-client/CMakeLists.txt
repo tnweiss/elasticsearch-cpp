@@ -15,6 +15,12 @@ add_library(elk-cpp-client STATIC
         elasticsearch/models/index/index_mapping_properties.cpp
         elasticsearch/models/index/index_mappings.cpp
 
+        kibana/kibana_client.cpp
+
+        kibana/models/create_saved_object_body.cpp
+        kibana/models/saved_object_type.h
+        kibana/models/saved_object_attributes.cpp
+
         elasticsearch/actions/cluster_details.cpp
         elasticsearch/actions/index.cpp
         )

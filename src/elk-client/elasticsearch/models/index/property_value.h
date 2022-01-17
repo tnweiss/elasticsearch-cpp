@@ -23,9 +23,9 @@ class PropertyValue: public Model {
   explicit PropertyValue(std::shared_ptr<nlohmann::json> json, nlohmann::json::json_pointer basePointer): Model(std::move(json), std::move(basePointer)) {}
 
   ////////////////////////////////////////////////// SETTERS / GETTERS /////////////////////////////////////////////////
-  IndexTypes type();
+  IndexType type();
 
-  void type(IndexTypes& type);
+  void type(IndexType& type);
 
   bool index();
 

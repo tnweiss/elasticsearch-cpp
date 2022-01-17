@@ -94,3 +94,7 @@ bool elk::Model::get_bool(const char *key) const {
 bool elk::Model::get_bool(const char *key, bool defaultValue) {
   return _json->value(attr_pointer(key), defaultValue);
 }
+
+std::string elk::Model::to_string() const {
+  return _json->dump(2);
+}

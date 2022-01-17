@@ -15,6 +15,13 @@ namespace elk {
 class Model {
  public:
   /**
+   * Converts model to string
+   * @return
+   */
+  [[nodiscard]] std::string to_string() const;
+
+ protected:
+  /**
    * Initialize with a json string
    * @param jsonString
    */
@@ -156,10 +163,10 @@ class Model {
     nlohmann::json::json_pointer newPtr(_basePointer);
     newPtr.push_back(key);
 
-    spdlog::info(std::string("Model::_basePointer(") + _basePointer.to_string() + ")");
-    spdlog::info(std::string("get_object(") + key + ")");
-    spdlog::info(std::string("newPtr(") + newPtr.to_string() + ")");
-    spdlog::info("");
+    spdlog::debug(std::string("Model::_basePointer(") + _basePointer.to_string() + ")");
+    spdlog::debug(std::string("get_object(") + key + ")");
+    spdlog::debug(std::string("newPtr(") + newPtr.to_string() + ")");
+    spdlog::debug("");
 
     T t(_json, newPtr);
     return t;
@@ -197,6 +204,30 @@ class Model {
     throw std::exception("No enum value");
   }
 
+  /**
+   * Get string value as an enum
+   * @tparam T
+   * @param str_val
+   * @return
+   */
+  template<class T, typename std::enable_if<std::is_enum<T>::value>::type * = nullptr>
+  T get_enum(std::string str_val) const {
+    auto val = magic_enum::enum_cast<T>(str_val);
+
+    if (val.has_value()) {
+      return val.value();
+    }
+
+    spdlog::error(std::string("No value found for value(" + str_val + ")"));
+    throw std::exception("No enum value");
+  }
+
+  /**
+   *
+   * @tparam T
+   * @param key
+   * @param value
+   */
   template<class T, typename std::enable_if<std::is_enum<T>::value>::type * = nullptr>
   void set_enum(const char* key, T value) {
     set(key, std::string(magic_enum::enum_name(value)));

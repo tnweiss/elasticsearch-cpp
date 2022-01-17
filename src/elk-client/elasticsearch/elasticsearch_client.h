@@ -9,10 +9,11 @@
 #include "common/authentication.h"
 
 #include "elasticsearch/models/cluster_details.h"
+#include "elasticsearch/models/create_index_body.h"
 
 namespace elk {
 
-static const char* DEFAULT_ORIGIN = "http://localhost:9200";
+static const char* DEFAULT_ELASTIC_ORIGIN = "http://localhost:9200";
 
 class ElasticsearchClient {
  public:
@@ -49,10 +50,24 @@ class ElasticsearchClient {
   /**
    * Check to see that the target index exists
    * https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-exists.html
-   * @param target
+   * @param target the index id
    * @return
    */
   bool index_exists(const char* target) const;
+
+  /**
+   * Create an index
+   * https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-index.html
+   * @param target the index id
+   * @param request_body index body request body
+   */
+  void create_index(const char* target, elk::CreateIndexBody& request_body) const;
+
+  /**
+   * Delete an index
+   * @param target
+   */
+  void delete_index(const char* target) const;
 
  private:
   const std::string _origin;
