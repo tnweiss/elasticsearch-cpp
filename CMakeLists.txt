@@ -2,7 +2,15 @@ project(elk-cpp-client)
 cmake_minimum_required (VERSION 3.5)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
-set(ELASTICSEARCH_VERSION 0.0.1)
+
+set(CMAKE_PROJECT_VERSION 0.0.1)
+set(LIBRARY_VERSION 0_0_1)
+
+if (MSVC)
+    set(LIBRARY_NAME "elk-client-${LIBRARY_VERSION}-vc${MSVC_TOOLSET_VERSION}-${CMAKE_C_COMPILER_ARCHITECTURE_ID}")
+else()
+    set(LIBRARY_NAME "elk-client-${LIBRARY_VERSION}-${CMAKE_C_COMPILER_ARCHITECTURE_ID}")
+endif()
 
 ####### Dependencies ##########
 link_directories(dependencies/lib)
@@ -18,4 +26,4 @@ FetchContent_MakeAvailable(cpr)
 add_subdirectory(src)
 
 ########## Libraries ##########
-install(TARGETS elk-cpp-client DESTINATION lib)
+install(TARGETS ${LIBRARY_NAME} DESTINATION lib)
