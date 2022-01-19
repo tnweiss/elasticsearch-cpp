@@ -10,5 +10,5 @@ add_library(${LIBRARY_NAME} STATIC
         ${ELASTICSEARCH_SOURCES}
         ${KIBANA_SOURCES})
 
-target_include_directories(${LIBRARY_NAME} PUBLIC elk-client)
+#target_include_directories(${LIBRARY_NAME} PUBLIC elk-client)
 target_link_libraries(${LIBRARY_NAME} PUBLIC spdlog::spdlog cpr::cpr)
