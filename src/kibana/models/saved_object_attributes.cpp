@@ -2,8 +2,8 @@
 // Created by tnwei on 1/16/2022.
 //
 
-#include "common/keys.h"
-#include "kibana/models/saved_object_attributes.h"
+#include "elk/common/keys.h"
+#include "elk/kibana/models/saved_object_attributes.h"
 
 std::string elk::SavedObjectAttributes::title() const {
   return get_string(TITLE);

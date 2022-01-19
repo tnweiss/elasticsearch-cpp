@@ -2,9 +2,12 @@
 // Created by tnwei on 1/8/2022.
 //
 
-#include "common/authentication.h"
+
 #include "spdlog/spdlog.h"
-#include "common/exceptions.h"
+
+#include "elk/common/authentication.h"
+#include "elk/common/exceptions.h"
+
 
 elk::ElkAuthentication::ElkAuthentication(const char *username, const char *password):
   _auth_type(AuthType::BASIC),

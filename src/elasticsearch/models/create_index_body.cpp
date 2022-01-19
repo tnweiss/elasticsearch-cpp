@@ -2,7 +2,7 @@
 // Created by tnwei on 1/9/2022.
 //
 
-#include "elasticsearch/models/create_index_body.h"
+#include "elk/elasticsearch/models/create_index_body.h"
 
 elk::IndexMappings elk::CreateIndexBody::mappings() {
   return get_object<IndexMappings>(MAPPINGS);

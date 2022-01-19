@@ -2,7 +2,7 @@
 // Created by tyler on 1/18/22.
 //
 
-#include "common/exceptions.h"
+#include "elk/common/exceptions.h"
 
 elk::ELKException::ELKException(const std::string& msg): _msg(msg) {
 

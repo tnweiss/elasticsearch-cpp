@@ -5,11 +5,11 @@
 #define CATCH_CONFIG_MAIN
 #include "catch2.hpp"
 
-#include "kibana/models/saved_object_type.h"
-#include "common/authentication.h"
-#include "elasticsearch/elasticsearch_client.h"
-#include "kibana/kibana_client.h"
-#include "elasticsearch/models/create_index_body.h"
+#include "elk/kibana/models/saved_object_type.h"
+#include "elk/common/authentication.h"
+#include "elk/elasticsearch/elasticsearch_client.h"
+#include "elk/kibana/kibana_client.h"
+#include "elk/elasticsearch/models/create_index_body.h"
 
 // TEST DATA
 static const char* USERNAME = "elastic";

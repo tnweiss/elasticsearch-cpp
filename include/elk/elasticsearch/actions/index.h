@@ -6,8 +6,8 @@
 #define ELK_CPP_CLIENT_SRC_ELK_CLIENT_ELASTICSEARCH_ACTIONS_INDEX_H_
 
 #include "string"
-#include "common/authentication.h"
-#include "elasticsearch/models/create_index_body.h"
+#include "elk/common/authentication.h"
+#include "elk/elasticsearch/models/create_index_body.h"
 
 /**
  * Returns true if the index exists, false if it does not

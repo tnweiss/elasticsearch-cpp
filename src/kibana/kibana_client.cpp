@@ -2,8 +2,8 @@
 // Created by tnwei on 1/16/2022.
 //
 
-#include "kibana/kibana_client.h"
-#include "kibana/actions/saved_object.h"
+#include "elk/kibana/kibana_client.h"
+#include "elk/kibana/actions/saved_object.h"
 
 elk::KibanaClient::KibanaClient(): KibanaClient(elk::DEFAULT_KIBANA_ORIGIN) { }
 

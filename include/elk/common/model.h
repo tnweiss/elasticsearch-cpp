@@ -9,8 +9,8 @@
 #include "string"
 #include "nlohmann/json.hpp"
 #include "spdlog/spdlog.h"
-#include "elasticsearch/models/index_types.h"
-#include "common/exceptions.h"
+#include "elk/elasticsearch/models/index_types.h"
+#include "exceptions.h"
 
 namespace elk {
 class Model {

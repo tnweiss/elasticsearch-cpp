@@ -5,7 +5,7 @@
 #ifndef ELK_CPP_CLIENT_SRC_ELK_CLIENT_ELASTICSEARCH_MODELS_INDEX_INDEX_MAPPINGS_H_
 #define ELK_CPP_CLIENT_SRC_ELK_CLIENT_ELASTICSEARCH_MODELS_INDEX_INDEX_MAPPINGS_H_
 
-#include "common/model.h"
+#include "elk/common/model.h"
 #include "index_mapping_properties.h"
 
 namespace elk {

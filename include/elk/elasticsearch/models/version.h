@@ -8,7 +8,7 @@
 #include <utility>
 
 #include "string"
-#include "common/model.h"
+#include "elk/common/model.h"
 
 namespace elk {
 

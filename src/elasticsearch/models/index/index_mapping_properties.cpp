@@ -2,7 +2,7 @@
 // Created by tnwei on 1/15/2022.
 //
 
-#include "index_mapping_properties.h"
+#include "elk/elasticsearch/models/index/index_mapping_properties.h"
 
 elk::PropertyValue elk::IndexMappingProperties::get_property(const char *property) {
   return Model::get_object<PropertyValue>(property);

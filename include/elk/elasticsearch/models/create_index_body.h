@@ -5,8 +5,8 @@
 #ifndef ELK_CPP_CLIENT_SRC_ELK_CLIENT_ELASTICSEARCH_MODELS_CREATEINDEXBODY_H_
 #define ELK_CPP_CLIENT_SRC_ELK_CLIENT_ELASTICSEARCH_MODELS_CREATEINDEXBODY_H_
 
-#include "common/model.h"
-#include "../../../src/elasticsearch/models/index/index_mappings.h"
+#include "elk/common/model.h"
+#include "elk/elasticsearch/models/index/index_mappings.h"
 
 namespace elk {
 //////////////////////////////////////////////////////// KEYS ////////////////////////////////////////////////////////

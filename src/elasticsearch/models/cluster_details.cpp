@@ -2,7 +2,7 @@
 // Created by tnwei on 1/8/2022.
 //
 
-#include "elasticsearch/models/cluster_details.h"
+#include "elk/elasticsearch/models/cluster_details.h"
 
 std::string elk::ClusterDetails::name() const {
   return Model::get_string(NAME);

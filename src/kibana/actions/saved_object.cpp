@@ -5,8 +5,8 @@
 #include <spdlog/spdlog.h>
 #include <memory>
 
-#include "kibana/actions/saved_object.h"
-#include "common/error_handler.h"
+#include "elk/kibana/actions/saved_object.h"
+#include "elk/common/error_handler.h"
 
 /**
  * Replace underscores with hyphens

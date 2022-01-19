@@ -5,7 +5,7 @@
 #ifndef ELK_CPP_CLIENT_SRC_ELK_CLIENT_KIBANA_MODELS_SAVED_OBJECT_ATTRIBUTES_H_
 #define ELK_CPP_CLIENT_SRC_ELK_CLIENT_KIBANA_MODELS_SAVED_OBJECT_ATTRIBUTES_H_
 
-#include "common/model.h"
+#include "elk/common/model.h"
 
 namespace elk {
 class SavedObjectAttributes: public Model {

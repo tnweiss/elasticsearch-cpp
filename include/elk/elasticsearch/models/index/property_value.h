@@ -5,8 +5,8 @@
 #ifndef ELK_CPP_CLIENT_SRC_ELK_CLIENT_ELASTICSEARCH_MODELS_INDEX_PROPERTY_VALUE_H_
 #define ELK_CPP_CLIENT_SRC_ELK_CLIENT_ELASTICSEARCH_MODELS_INDEX_PROPERTY_VALUE_H_
 
-#include "common/model.h"
-#include "elasticsearch/models/index_types.h"
+#include "elk/common/model.h"
+#include "elk/elasticsearch/models/index_types.h"
 
 namespace elk {
 //////////////////////////////////////////////////////// KEYS ////////////////////////////////////////////////////////

@@ -2,12 +2,12 @@
 // Created by tnwei on 1/8/2022.
 //
 
-#include "elasticsearch/elasticsearch_client.h"
+#include "elk/elasticsearch/elasticsearch_client.h"
 
 #include <utility>
 
-#include "elasticsearch/actions/cluster_details.h"
-#include "elasticsearch/actions/index.h"
+#include "elk/elasticsearch/actions/cluster_details.h"
+#include "elk/elasticsearch/actions/index.h"
 
 
 elk::ElasticsearchClient::ElasticsearchClient(): ElasticsearchClient(elk::DEFAULT_ELASTIC_ORIGIN) { }

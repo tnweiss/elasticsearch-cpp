@@ -2,8 +2,8 @@
 // Created by tnwei on 1/9/2022.
 //
 
-#include "elasticsearch/actions/index.h"
-#include "common/error_handler.h"
+#include "elk/elasticsearch/actions/index.h"
+#include "elk/common/error_handler.h"
 
 
 bool index_exists_action(const std::string& origin, const elk::ElkAuthentication& authentication, const char* target) {

@@ -2,10 +2,10 @@
 // Created by tnwei on 1/8/2022.
 //
 
-#include "elasticsearch/actions/cluster_details.h"
+#include "elk/elasticsearch/actions/cluster_details.h"
 
 #include "cpr/cpr.h"
-#include "common/error_handler.h"
+#include "elk/common/error_handler.h"
 
 
 elk::ClusterDetails elk::get_cluster_details_actions(const std::string& origin, const elk::ElkAuthentication& auth) {
