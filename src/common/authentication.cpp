@@ -4,6 +4,7 @@
 
 #include "common/authentication.h"
 #include "spdlog/spdlog.h"
+#include "common/exceptions.h"
 
 elk::ElkAuthentication::ElkAuthentication(const char *username, const char *password):
   _auth_type(AuthType::BASIC),
@@ -31,7 +32,7 @@ void elk::ElkAuthentication::add_authentication(cpr::Session& session) const {
       break;
     default:
       spdlog::error("Unknown Auth type");
-      throw std::exception("Unhandled auth type");
+      throw elk::ELKException("Unhandled auth type");
   }
 
 }

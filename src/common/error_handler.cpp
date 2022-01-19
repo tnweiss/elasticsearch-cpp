@@ -2,6 +2,7 @@
 // Created by tnwei on 1/8/2022.
 //
 
+#include "common/exceptions.h"
 #include "common/error_handler.h"
 #include "spdlog/spdlog.h"
 
@@ -22,5 +23,5 @@ void error_handler(cpr::Response& response) {
   spdlog::error("Response Body: {0}", response.text);
 
   // throw the exception
-  throw std::exception("Error Response, See logs");
+  throw elk::ELKException("Error Response, See logs");
 }

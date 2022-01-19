@@ -54,7 +54,7 @@ std::unique_ptr<elk::CreateSavedObjectResponse> elk::create_saved_object_action(
     error_handler(response);
 
     // should not get to this point
-    throw std::exception("Unhandled exception");
+    throw elk::ELKException("Unhandled exception");
   }
 
   return std::make_unique<CreateSavedObjectResponse>(response.text);
@@ -90,7 +90,7 @@ void delete_saved_object_action(const std::string& origin, const elk::ElkAuthent
     error_handler(response);
 
     // should not get to this point
-    throw std::exception("Unhandled exception");
+    throw elk::ELKException("Unhandled exception");
   }
 }
 
@@ -129,5 +129,5 @@ bool saved_object_exists_action(const std::string& origin, const elk::ElkAuthent
   error_handler(response);
 
   // should not get to this point
-  throw std::exception("Unhandled exception");
+  throw elk::ELKException("Unhandled exception");
 }

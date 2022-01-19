@@ -10,6 +10,7 @@
 #include "nlohmann/json.hpp"
 #include "spdlog/spdlog.h"
 #include "elasticsearch/models/index_types.h"
+#include "common/exceptions.h"
 
 namespace elk {
 class Model {
@@ -201,7 +202,7 @@ class Model {
     }
 
     spdlog::error(std::string("No value found for key (") + key + ") value(" + get_string(key, "") + ")");
-    throw std::exception("No enum value");
+    throw elk::ELKException("No enum value");
   }
 
   /**
@@ -219,7 +220,7 @@ class Model {
     }
 
     spdlog::error(std::string("No value found for value(" + str_val + ")"));
-    throw std::exception("No enum value");
+    throw elk::ELKException("No enum value");
   }
 
   /**

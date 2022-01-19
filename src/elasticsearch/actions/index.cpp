@@ -29,7 +29,7 @@ bool index_exists_action(const std::string& origin, const elk::ElkAuthentication
   error_handler(response);
 
   // should not get to this point
-  throw std::exception("Unhandled exception");
+  throw elk::ELKException("Unhandled exception");
 }
 
 
@@ -58,7 +58,7 @@ void create_index_action(const std::string& origin, const elk::ElkAuthentication
     error_handler(response);
 
     // should not get to this point
-    throw std::exception("Unhandled exception");
+    throw elk::ELKException("Unhandled exception");
   }
 }
 
@@ -80,6 +80,6 @@ void delete_index_action(const std::string& origin, const elk::ElkAuthentication
     error_handler(response);
 
     // should not get to this point
-    throw std::exception("Unhandled exception");
+    throw elk::ELKException("Unhandled exception");
   }
 }
