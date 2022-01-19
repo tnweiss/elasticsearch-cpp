@@ -4,12 +4,6 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set(CMAKE_PROJECT_VERSION 0.0.1)
 
-#get_cmake_property(_variableNames VARIABLES)
-#list (SORT _variableNames)
-#foreach (_variableName ${_variableNames})
-#    message(STATUS "${_variableName}=${${_variableName}}")
-#endforeach()
-
 ####### Configure Library Name ##########
 if (MSVC)
     set(LIBRARY_NAME "elk-client-${CMAKE_PROJECT_VERSION}-${CMAKE_C_COMPILER_ARCHITECTURE_ID}-vc${MSVC_TOOLSET_VERSION}")
