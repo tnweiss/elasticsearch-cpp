@@ -14,7 +14,7 @@ endif()
 
 ####### Dependencies ##########
 link_directories(dependencies/lib)
-include_directories(dependencies/include)
+include_directories(dependencies/include include)
 find_package(spdlog REQUIRED) # logging
 
 ####### CRP Http Dep ##########
@@ -24,6 +24,7 @@ FetchContent_MakeAvailable(cpr)
 
 ########## Include the src subdirectory ##########
 add_subdirectory(src)
+add_subdirectory(test)
 
 ########## Libraries ##########
 install(TARGETS ${LIBRARY_NAME} DESTINATION lib)
