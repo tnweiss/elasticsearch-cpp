@@ -12,6 +12,12 @@ elk::Model::Model(const nlohmann::json &json):
   _basePointer(nlohmann::json::json_pointer("")){
 }
 
+elk::Model::Model(const char *jsonString):
+    _json(std::make_shared<nlohmann::json>(nlohmann::json::parse(jsonString))),
+    _basePointer(nlohmann::json::json_pointer("")) {
+
+}
+
 elk::Model::Model(const std::string &jsonString):
   _json(std::make_shared<nlohmann::json>(nlohmann::json::parse(jsonString))),
   _basePointer(nlohmann::json::json_pointer("")){
@@ -46,8 +52,7 @@ long elk::Model::get_long(const char *key, long defaultValue) {
 }
 
 nlohmann::json::json_pointer elk::Model::attr_pointer(const char *key) const {
-  nlohmann::json::json_pointer newPtr(_basePointer);
-  newPtr.push_back(key);
+  nlohmann::json::json_pointer newPtr(_basePointer.to_string() + key);
 
   spdlog::debug(std::string("Model::_basePointer(") + _basePointer.to_string() + ")");
   spdlog::debug(std::string("get_string(") + key + ")");
@@ -64,27 +69,27 @@ elk::Model::Model(elk::Model &&model) noexcept: _basePointer(model._basePointer)
 }
 
 void elk::Model::set(const char *key, std::string val) const {
-  (*_json)[key] = val;
+  (*_json)[attr_pointer(key)] = val;
 }
 
 void elk::Model::set(const char *key, const char *val) const {
-  (*_json)[key] = val;
+  (*_json)[attr_pointer(key)] = val;
 }
 
 void elk::Model::set(const char *key, int val) const {
-  (*_json)[key] = val;
+  (*_json)[attr_pointer(key)] = val;
 }
 
 void elk::Model::set(const char *key, long val) const {
-  (*_json)[key] = val;
+  (*_json)[attr_pointer(key)] = val;
 }
 
 void elk::Model::set(const char *key, bool val) const {
-  (*_json)[key] = val;
+  (*_json)[attr_pointer(key)] = val;
 }
 
 void elk::Model::set(const char *key, elk::Model& val) const {
-  (*_json)[key] = val._json->at(val._basePointer);
+  (*_json)[attr_pointer(key)] = val._json->at(val._basePointer);
 }
 
 bool elk::Model::get_bool(const char *key) const {
@@ -96,5 +101,9 @@ bool elk::Model::get_bool(const char *key, bool defaultValue) {
 }
 
 std::string elk::Model::to_string() const {
-  return _json->dump(2);
+  return _json->dump();
+}
+
+std::string elk::Model::to_string(short indent) const {
+  return _json->dump(indent);
 }

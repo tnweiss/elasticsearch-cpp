@@ -9,5 +9,7 @@ set(ELASTICSEARCH_SOURCES
         elasticsearch/models/create_index_body.cpp
         elasticsearch/models/version.cpp
         elasticsearch/elasticsearch_client.cpp
+        elasticsearch/models/index/bulk_insert_action.cpp
+        elasticsearch/models/index/bulk_insert_body.cpp
 
         PARENT_SCOPE)

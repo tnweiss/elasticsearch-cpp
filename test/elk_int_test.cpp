@@ -10,6 +10,7 @@
 #include "elk/elasticsearch/elasticsearch_client.h"
 #include "elk/kibana/kibana_client.h"
 #include "elk/elasticsearch/models/create_index_body.h"
+#include "elk/elasticsearch/models/index/bulk_insert_body.h"
 
 // TEST DATA
 static const char* USERNAME = "elastic";
@@ -131,4 +132,26 @@ TEST_CASE("PostIndexModel") {
   REQUIRE(post_body.mappings().properties().get_property("age").type() == IndexType::INTEGER);
   REQUIRE(post_body.mappings().properties().get_property("email").type() == IndexType::KEYWORD);
   REQUIRE(post_body.mappings().properties().get_property("name").type() == IndexType::TEXT);
+}
+
+TEST_CASE("BulkInsertBody") {
+  elk::BulkInsertBody body;
+  auto data_json = R"(
+{"test": "testVal"}
+)"_json;
+  elk::BulkInsertData data(data_json);
+
+  body.create("test", "test", data);
+  body.create("test", "test1", data);
+
+  std::cout << body.to_x_ndjson() << std::endl;
+
+//nlohmann::json test = R"({})"_json;
+//nlohmann::json::json_pointer ptr("/t/r");
+////ptr.push_back("t/y/l");
+//ptr /= "tyle/ttt";
+//
+//ptr.push_back("zz");
+//test[ptr] = "hello world";
+//std::cout << test.dump() << std::endl;
 }

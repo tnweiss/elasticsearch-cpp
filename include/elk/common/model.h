@@ -21,7 +21,19 @@ class Model {
    */
   [[nodiscard]] std::string to_string() const;
 
+  /**
+    * Converts model to string
+    * @param indent
+    * @return
+    */
+  [[nodiscard]] std::string to_string(short indent) const;
  protected:
+  /**
+   * Initialize with a character string
+   * @param jsonString
+   */
+  explicit Model(const char* jsonString);
+
   /**
    * Initialize with a json string
    * @param jsonString
@@ -240,6 +252,7 @@ class Model {
    */
   friend std::ostream& operator<<(std::ostream& stream, const Model& model) {
     stream << (*model._json)[model._basePointer].dump(2) << std::endl;
+    return stream;
   }
 
  private:

@@ -3,7 +3,10 @@
 //
 
 #include "elk/elasticsearch/models/index/property_value.h"
+
 #include <algorithm>
+
+#include "elk/common/keys.h"
 
 
 IndexType elk::PropertyValue::type() {
