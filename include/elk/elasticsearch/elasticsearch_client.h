@@ -10,6 +10,7 @@
 
 #include "elk/elasticsearch/models/cluster_details.h"
 #include "elk/elasticsearch/models/create_index_body.h"
+#include "elk/elasticsearch/models/index/bulk_insert_body.h"
 
 namespace elk {
 
@@ -69,6 +70,12 @@ class ElasticsearchClient {
    */
   void delete_index(const char* target) const;
 
+  /**
+   *
+   * @param target
+   * @param request_body
+   */
+  void bulk_update_index(const char* target, elk::BulkInsertBody& request_body) const;
  private:
   const std::string _origin;
   const elk::ElkAuthentication& _authentication;

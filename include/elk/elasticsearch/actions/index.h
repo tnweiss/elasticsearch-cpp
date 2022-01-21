@@ -8,6 +8,7 @@
 #include "string"
 #include "elk/common/authentication.h"
 #include "elk/elasticsearch/models/create_index_body.h"
+#include "elk/elasticsearch/models/index/bulk_insert_body.h"
 
 /**
  * Returns true if the index exists, false if it does not
@@ -38,5 +39,15 @@ void create_index_action(const std::string& origin, const elk::ElkAuthentication
  * @param target index name
  */
 void delete_index_action(const std::string& origin, const elk::ElkAuthentication& authentication, const char* target);
+
+/**
+ * Bulk insert update delete index data
+ * https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html
+ * @param origin elasticsearch origin
+ * @param authentication elasticsearch authentication
+ * @param target index name
+ */
+void bulk_update_index_action(const std::string& origin, const elk::ElkAuthentication& authentication,
+                              const char* target, const elk::BulkInsertBody& request_body);
 
 #endif //ELK_CPP_CLIENT_SRC_ELK_CLIENT_ELASTICSEARCH_ACTIONS_INDEX_H_

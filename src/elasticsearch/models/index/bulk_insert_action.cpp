@@ -16,7 +16,7 @@ std::string elk::create_key(IndexAction index_action, const char* sub_path) {
   action_str.replace(action_str.find("_action"), sizeof("_action") - 1, "");
 
   // create the full path to the resource
-  return "/" + action_str + "/" + sub_path;
+  return action_str + "/" + sub_path;
 }
 
 std::string elk::BulkInsertAction::id() const {

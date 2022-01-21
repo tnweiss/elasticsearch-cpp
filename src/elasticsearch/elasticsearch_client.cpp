@@ -4,8 +4,6 @@
 
 #include "elk/elasticsearch/elasticsearch_client.h"
 
-#include <utility>
-
 #include "elk/elasticsearch/actions/cluster_details.h"
 #include "elk/elasticsearch/actions/index.h"
 
@@ -35,4 +33,8 @@ void elk::ElasticsearchClient::create_index(const char *target, elk::CreateIndex
 
 void elk::ElasticsearchClient::delete_index(const char* target) const {
   return delete_index_action(_origin, _authentication, target);
+}
+
+void elk::ElasticsearchClient::bulk_update_index(const char *target, elk::BulkInsertBody &request_body) const {
+  return bulk_update_index_action(_origin, _authentication, target, request_body);
 }

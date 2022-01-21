@@ -50,7 +50,7 @@ class Model {
    * Initialize with a reference to another json object
    * @param json
    */
-  Model(std::shared_ptr<nlohmann::json> json, nlohmann::json::json_pointer  basePointer);
+  Model(std::shared_ptr<nlohmann::json> json, nlohmann::json::json_pointer basePointer);
 
   /**
    * Copy constructor
@@ -173,11 +173,11 @@ class Model {
    */
   template<typename T, typename std::enable_if<std::is_base_of<Model, T>::value>::type * = nullptr>
   T get_object(const char *key) const {
-    nlohmann::json::json_pointer newPtr(_basePointer);
-    newPtr.push_back(key);
-
     spdlog::debug(std::string("Model::_basePointer(") + _basePointer.to_string() + ")");
-    spdlog::debug(std::string("get_object(") + key + ")");
+    spdlog::debug(std::string("key(") + key + ")");
+
+    nlohmann::json::json_pointer newPtr(_basePointer.to_string() + key);
+
     spdlog::debug(std::string("newPtr(") + newPtr.to_string() + ")");
     spdlog::debug("");
 

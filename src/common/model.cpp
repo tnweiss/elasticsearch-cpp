@@ -9,18 +9,18 @@
 
 elk::Model::Model(const nlohmann::json &json):
   _json(std::make_shared<nlohmann::json>(json)),
-  _basePointer(nlohmann::json::json_pointer("")){
+  _basePointer(nlohmann::json::json_pointer("/")){
 }
 
 elk::Model::Model(const char *jsonString):
     _json(std::make_shared<nlohmann::json>(nlohmann::json::parse(jsonString))),
-    _basePointer(nlohmann::json::json_pointer("")) {
+    _basePointer(nlohmann::json::json_pointer("/")) {
 
 }
 
 elk::Model::Model(const std::string &jsonString):
   _json(std::make_shared<nlohmann::json>(nlohmann::json::parse(jsonString))),
-  _basePointer(nlohmann::json::json_pointer("")){
+  _basePointer(nlohmann::json::json_pointer("/")){
 }
 
 elk::Model::Model(std::shared_ptr<nlohmann::json> json, nlohmann::json::json_pointer  basePointer):
@@ -52,10 +52,11 @@ long elk::Model::get_long(const char *key, long defaultValue) {
 }
 
 nlohmann::json::json_pointer elk::Model::attr_pointer(const char *key) const {
+  spdlog::debug(std::string("Model::_basePointer(") + _basePointer.to_string() + ")");
+  spdlog::debug(std::string("get_key(") + key + ")");
+
   nlohmann::json::json_pointer newPtr(_basePointer.to_string() + key);
 
-  spdlog::debug(std::string("Model::_basePointer(") + _basePointer.to_string() + ")");
-  spdlog::debug(std::string("get_string(") + key + ")");
   spdlog::debug(std::string("newPtr(") + newPtr.to_string() + ")");
   spdlog::debug("");
 

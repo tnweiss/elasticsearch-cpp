@@ -18,17 +18,23 @@ namespace elk {
 class BulkInsertBody {
  public:
   /**
-   *
+   * Default Constructor
    */
   BulkInsertBody();
 
   /**
-   *
-   * @param index
-   * @param id
-   * @param data
+   * Create data action with a specific index and a specific id
+   * @param index the index id
+   * @param id the id of the data
+   * @param data the data to insert
    */
-  void create(const char* index, const char* id, elk::BulkInsertData& data) const;
+  void create(const char* index, const char* id, const elk::BulkInsertData& data) const;
+
+  /**
+   * Create data action using a default id and the globally specified index
+   * @param data the data to create in the index
+   */
+  void create(const elk::BulkInsertData& data) const;
 
   /**
    *
