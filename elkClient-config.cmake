@@ -1,0 +1,11 @@
+find_path(ELK_CLIENT_INCLUDE_DIR NAMES keys.h)
+
+find_library(ELK_CLIENT_LIBRARY NAMES elkClient)
+
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(ELK_CLIENT REQUIRED_VARS ELK_CLIENT_LIBRARY ELK_CLIENT_INCLUDE_DIR)
+
+if(ELK_CLIENT_FOUND)
+    set(ELK_CLIENT_LIBRARIES ${ELK_CLIENT_LIBRARY})
+    set(ELK_CLIENT_INCLUDE_DIRS ${ELK_CLIENT_INCLUDE_DIR})
+endif()
