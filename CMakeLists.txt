@@ -12,7 +12,10 @@ else()
 endif()
 
 ####### Dependencies ##########
-include_directories(${CMAKE_CURRENT_LIST_DIR}/dependencies/include ${CMAKE_CURRENT_LIST_DIR}/include)
+set(DEPENDENCY_INCLUDES "${CMAKE_CURRENT_LIST_DIR}/dependencies/include")
+set(ELK_INCLUDES "${CMAKE_CURRENT_LIST_DIR}/include")
+include_directories(${DEPENDENCY_INCLUDES} ${ELK_INCLUDES})
+message("-- Includes ${DEPENDENCY_INCLUDES} ${ELK_INCLUDES}")
 find_package(spdlog REQUIRED) # logging
 
 ####### CRP Http Dep ##########
