@@ -1,2 +1,5 @@
 cmake-build-debug
 .idea
+
+dependencies/*
+!dependencies/CMakeLists.txt
