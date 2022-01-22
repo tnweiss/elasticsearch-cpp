@@ -40,14 +40,14 @@ FetchContent_MakeAvailable(cpr)
 ####### JSON ##########
 file(DOWNLOAD
         https://raw.githubusercontent.com/nlohmann/json/v${NLOHMANN_JSON_VERSION}/single_include/nlohmann/json.hpp
-        ${CMAKE_SOURCE_DIR}/dependencies/include/nlohmann/json.hpp)
+        ${CMAKE_CURRENT_LIST_DIR}/../dependencies/include/nlohmann/json.hpp)
 
 ####### Enum ##########.
 file(DOWNLOAD
         https://raw.githubusercontent.com/Neargye/magic_enum/v${MAGIC_ENUM_VERSION}/include/magic_enum.hpp
-        ${CMAKE_SOURCE_DIR}/dependencies/include/magic_enum.hpp)
+        ${CMAKE_CURRENT_LIST_DIR}/../dependencies/include/magic_enum.hpp)
 
 ####### Unit Testing ##########.
 file(DOWNLOAD
         https://raw.githubusercontent.com/catchorg/Catch2/v${CATCH_VERSION}/single_include/catch2/catch.hpp
-        ${CMAKE_SOURCE_DIR}/dependencies/include/catch.hpp)
+        ${CMAKE_CURRENT_LIST_DIR}/../dependencies/include/catch.hpp)
