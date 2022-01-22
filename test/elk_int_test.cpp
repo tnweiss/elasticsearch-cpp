@@ -3,7 +3,7 @@
 //
 
 #define CATCH_CONFIG_MAIN
-#include "catch2.hpp"
+#include "catch.hpp"
 
 #include "elk/kibana/models/saved_object_type.h"
 #include "elk/common/authentication.h"

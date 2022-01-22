@@ -1,5 +1,6 @@
 target_include_directories(${LIBRARY_NAME}
         PUBLIC
+            include
             $<INSTALL_INTERFACE:include>
-            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include
 )

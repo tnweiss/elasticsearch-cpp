@@ -1,8 +1,14 @@
+####### ELK Client ##########
 project(elk-client)
 cmake_minimum_required (VERSION 3.5)
+
+####### CMAKE VARIABLES ##########
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set(CMAKE_PROJECT_VERSION 0.0.1)
+
+####### Handle Collecting Dependencies ##########
+include(cmake/dependencies.cmake)
 
 ####### Configure Library Name ##########
 if (MSVC)
@@ -11,21 +17,10 @@ else()
     set(LIBRARY_NAME "elk-client-${CMAKE_PROJECT_VERSION}-${CMAKE_LIBRARY_ARCHITECTURE}")
 endif()
 
-####### Dependencies ##########
-set(DEPENDENCY_INCLUDES "${CMAKE_CURRENT_LIST_DIR}/dependencies/include")
-set(ELK_INCLUDES "${CMAKE_CURRENT_LIST_DIR}/include")
-include_directories(${DEPENDENCY_INCLUDES} ${ELK_INCLUDES})
-message("-- Includes ${DEPENDENCY_INCLUDES} ${ELK_INCLUDES}")
-find_package(spdlog REQUIRED) # logging
-
-####### CRP Http Dep ##########
-include(FetchContent)
-FetchContent_Declare(cpr GIT_REPOSITORY https://github.com/libcpr/cpr.git GIT_TAG 67e12da316754ff3c6c91b50aafb2658438f3c1e) # the commit hash for 1.7.0
-FetchContent_MakeAvailable(cpr)
-
 ########## Include the src subdirectory ##########
 add_subdirectory(src)
 add_subdirectory(include)
+add_subdirectory(dependencies)
 add_subdirectory(test)
 
 ########## Libraries ##########
