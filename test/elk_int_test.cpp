@@ -88,7 +88,7 @@ static const elk::BulkInsertData& bulk_insert_data() {
 
 TEST_CASE("ElasticsearchKibanaClientTest") {
   SECTION("SetLogLevel") {
-    spdlog::set_level(spdlog::level::info);
+    spdlog::set_level(spdlog::level::debug);
   }
 
   SECTION("GetClusterDetails") {

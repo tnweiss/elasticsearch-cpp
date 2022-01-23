@@ -4,8 +4,6 @@
 
 #include "elk/common/model.h"
 
-#include <utility>
-#include "spdlog/spdlog.h"
 
 elk::Model::Model(const nlohmann::json &json):
   _json(std::make_shared<nlohmann::json>(json)),

@@ -2,8 +2,6 @@
 // Created by tnwei on 1/16/2022.
 //
 
-#include <spdlog/spdlog.h>
-#include <memory>
 
 #include "elk/kibana/actions/saved_object.h"
 #include "elk/common/error_handler.h"
@@ -31,13 +29,16 @@ std::unique_ptr<elk::CreateSavedObjectResponse> elk::create_saved_object_action(
   transform(type_str.begin(), type_str.end(), type_str.begin(), ::tolower); // convert it to lowercase
 
   // create the url and add it to the session
-  cpr::priv::set_option(session, cpr::Url(origin + "/api/saved_objects/" + type_str + "/" + id));
+  std::string url = origin + "/api/saved_objects/" + type_str + "/" + id;
+  cpr::priv::set_option(session, cpr::Url(url));
+  spdlog::debug("Create Saved Object URL: {0}", url);
 
   // add authentication
   authentication.add_authentication(session);
 
   // set the request body
   cpr::priv::set_option(session, cpr::Body(body.to_string()));
+  spdlog::debug("Create Saved Object Body: {0}", body.to_string());
 
   // set the request body type to json
   cpr::Header headers({
@@ -49,13 +50,8 @@ std::unique_ptr<elk::CreateSavedObjectResponse> elk::create_saved_object_action(
   // make the request
   cpr::Response response = session.Post();
 
-  if (response.status_code != 200) {
-    // handle exception
-    error_handler(response);
-
-    // should not get to this point
-    throw elk::ELKException("Unhandled exception");
-  }
+  // check for an error
+  elk::check_for_error(response);
 
   return std::make_unique<CreateSavedObjectResponse>(response.text);
 }
@@ -71,7 +67,9 @@ void delete_saved_object_action(const std::string& origin, const elk::ElkAuthent
   transform(type_str.begin(), type_str.end(), type_str.begin(), ::tolower); // convert it to lowercase
 
   // create the url and add it to the session
-  cpr::priv::set_option(session, cpr::Url(origin + "/api/saved_objects/" + type_str + "/" + id));
+  std::string url = origin + "/api/saved_objects/" + type_str + "/" + id;
+  cpr::priv::set_option(session, cpr::Url(url));
+  spdlog::debug("Delete Saved Object URL: {0}", url);
 
   // add authentication
   authentication.add_authentication(session);
@@ -85,13 +83,8 @@ void delete_saved_object_action(const std::string& origin, const elk::ElkAuthent
   // make the request
   cpr::Response response = session.Delete();
 
-  if (response.status_code != 200) {
-    // handle exception
-    error_handler(response);
-
-    // should not get to this point
-    throw elk::ELKException("Unhandled exception");
-  }
+  // check for errors
+  elk::check_for_error(response);
 }
 
 bool saved_object_exists_action(const std::string& origin, const elk::ElkAuthentication& authentication,
@@ -105,7 +98,9 @@ bool saved_object_exists_action(const std::string& origin, const elk::ElkAuthent
   transform(type_str.begin(), type_str.end(), type_str.begin(), ::tolower); // convert it to lowercase
 
   // create the url and add it to the session
-  cpr::priv::set_option(session, cpr::Url(origin + "/api/saved_objects/" + type_str + "/" + id));
+  std::string url = origin + "/api/saved_objects/" + type_str + "/" + id;
+  cpr::priv::set_option(session, cpr::Url(url));
+  spdlog::debug("Saved Object Exists URL: {0}", url);
 
   // add authentication
   authentication.add_authentication(session);
@@ -126,8 +121,5 @@ bool saved_object_exists_action(const std::string& origin, const elk::ElkAuthent
   }
 
   // handle exception
-  error_handler(response);
-
-  // should not get to this point
-  throw elk::ELKException("Unhandled exception");
+  elk::handle_error(response);
 }

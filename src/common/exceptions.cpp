@@ -4,7 +4,9 @@
 
 #include "elk/common/exceptions.h"
 
-elk::ELKException::ELKException(const std::string& msg): _msg(msg) {
+#include <utility>
+
+elk::ELKException::ELKException(std::string  msg): _msg(std::move(msg)) {
 
 }
 

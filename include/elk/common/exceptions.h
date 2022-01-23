@@ -11,7 +11,7 @@ namespace elk {
 
 class ELKException: public std::exception {
   public:
-   explicit ELKException(const std::string& msg);
+   explicit ELKException(std::string  msg);
    explicit ELKException(const char* msg);
    [[nodiscard]] const char* what() const noexcept override;
   private:

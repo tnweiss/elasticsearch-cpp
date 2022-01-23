@@ -2,18 +2,20 @@
 // Created by tnwei on 1/8/2022.
 //
 
-#include "spdlog/spdlog.h"
 
 #include "elk/common/exceptions.h"
 #include "elk/common/error_handler.h"
 
 
-void error_handler(cpr::Response& response) {
+void elk::check_for_error(cpr::Response& response) {
   // if successfully response code return
-  if ((response.status_code / 100) == 2) {
-    return;
+  if ((response.status_code / 100) != 2) {
+    handle_error(response);
   }
+}
 
+
+void elk::handle_error(cpr::Response& response) {
   // log the request url
   spdlog::debug("Request URL: {0}", response.url.data());
 

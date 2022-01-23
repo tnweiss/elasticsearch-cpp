@@ -4,7 +4,6 @@
 
 #include "elk/elasticsearch/actions/cluster_details.h"
 
-#include "cpr/cpr.h"
 #include "elk/common/error_handler.h"
 
 
@@ -14,6 +13,7 @@ elk::ClusterDetails elk::get_cluster_details_actions(const std::string& origin, 
 
   // create the url and add it to the session
   cpr::priv::set_option(session, cpr::Url(origin));
+  spdlog::debug("Get Cluster Details URL: {0}", origin);
 
   // add authentication
   auth.add_authentication(session);
@@ -22,7 +22,7 @@ elk::ClusterDetails elk::get_cluster_details_actions(const std::string& origin, 
   cpr::Response response = session.Get();
 
   // check for exceptions
-  error_handler(response);
+  check_for_error(response);
 
   // deserialize the response
   return elk::ClusterDetails(response.text);
