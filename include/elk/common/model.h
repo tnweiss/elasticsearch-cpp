@@ -173,15 +173,7 @@ class Model {
    */
   template<typename T, typename std::enable_if<std::is_base_of<Model, T>::value>::type * = nullptr>
   T get_object(const char *key) const {
-    spdlog::debug(std::string("Model::_basePointer(") + _basePointer.to_string() + ")");
-    spdlog::debug(std::string("key(") + key + ")");
-
-    nlohmann::json::json_pointer newPtr(_basePointer.to_string() + key);
-
-    spdlog::debug(std::string("newPtr(") + newPtr.to_string() + ")");
-    spdlog::debug("");
-
-    T t(_json, newPtr);
+    T t(_json, attr_pointer(key));
     return t;
   }
 
