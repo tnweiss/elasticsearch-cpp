@@ -5,15 +5,15 @@
 #include "elk/elasticsearch/actions/index.h"
 #include "elk/common/error_handler.h"
 
-#include "combaseapi.h"
-
 
 bool index_exists_action(const std::string& origin, const elk::ElkAuthentication& authentication, const char* target) {
   // initialize the session
   cpr::Session session;
 
   // create the url and add it to the session
-  cpr::priv::set_option(session, cpr::Url(origin + "/" + target));
+  std::string url = origin + "/" + target;
+  cpr::priv::set_option(session, cpr::Url(url));
+  spdlog::debug("Index Exists URL: {0}", url);
 
   // add authentication
   authentication.add_authentication(session);
@@ -28,10 +28,7 @@ bool index_exists_action(const std::string& origin, const elk::ElkAuthentication
   }
 
   // handle exception
-  error_handler(response);
-
-  // should not get to this point
-  throw elk::ELKException("Unhandled exception");
+  elk::handle_error(response);
 }
 
 
@@ -41,13 +38,17 @@ void create_index_action(const std::string& origin, const elk::ElkAuthentication
   cpr::Session session;
 
   // create the url and add it to the session
-  cpr::priv::set_option(session, cpr::Url(origin + "/" + target));
+  std::string url = origin + "/" + target;
+  cpr::priv::set_option(session, cpr::Url(url));
+  spdlog::debug("Create Index URL: {0}", url);
 
   // add authentication
   authentication.add_authentication(session);
 
   // set the request body
-  cpr::priv::set_option(session, cpr::Body(request_body.to_string()));
+  std::string body = request_body.to_string();
+  cpr::priv::set_option(session, cpr::Body(body));
+  spdlog::debug("Create Index Body: {0}", body);
 
   // set the request body type to json
   cpr::priv::set_option(session, cpr::Header{{"Content-Type", "application/json"}});
@@ -55,13 +56,8 @@ void create_index_action(const std::string& origin, const elk::ElkAuthentication
   // make the request
   cpr::Response response = session.Put();
 
-  if (response.status_code != 200) {
-    // handle exception
-    error_handler(response);
-
-    // should not get to this point
-    throw elk::ELKException("Unhandled exception");
-  }
+  // check for an error
+  elk::check_for_error(response);
 }
 
 void delete_index_action(const std::string& origin, const elk::ElkAuthentication& authentication, const char* target) {
@@ -69,7 +65,9 @@ void delete_index_action(const std::string& origin, const elk::ElkAuthentication
   cpr::Session session;
 
   // create the url and add it to the session
-  cpr::priv::set_option(session, cpr::Url(origin + "/" + target));
+  std::string url = origin + "/" + target;
+  cpr::priv::set_option(session, cpr::Url(url));
+  spdlog::debug("Delete Index URL: {0}", url);
 
   // add authentication
   authentication.add_authentication(session);
@@ -77,13 +75,8 @@ void delete_index_action(const std::string& origin, const elk::ElkAuthentication
   // make the request
   cpr::Response response = session.Delete();
 
-  if (response.status_code != 200) {
-    // handle exception
-    error_handler(response);
-
-    // should not get to this point
-    throw elk::ELKException("Unhandled exception");
-  }
+  // check for an error
+  elk::check_for_error(response);
 }
 
 void bulk_update_index_action(const std::string& origin, const elk::ElkAuthentication& authentication,
@@ -92,13 +85,17 @@ void bulk_update_index_action(const std::string& origin, const elk::ElkAuthentic
   cpr::Session session;
 
   // create the url and add it to the session
-  cpr::priv::set_option(session, cpr::Url(origin + "/" + target + "/_bulk"));
+  std::string url = origin + "/" + target + "/_bulk";
+  cpr::priv::set_option(session, cpr::Url(url));
+  spdlog::debug("Bulk Update Index URL: {0}", url);
 
   // add authentication
   authentication.add_authentication(session);
 
   // set the request body
-  cpr::priv::set_option(session, cpr::Body(request_body.to_x_ndjson()));
+  std::string body = request_body.to_x_ndjson();
+  cpr::priv::set_option(session, cpr::Body(body));
+  spdlog::debug("Bulk Update Index Body: \n{0}", body);
 
   // set the request body type to json
   cpr::priv::set_option(session, cpr::Header{{"Content-Type", "application/x-ndjson"}});
@@ -106,11 +103,6 @@ void bulk_update_index_action(const std::string& origin, const elk::ElkAuthentic
   // make the request
   cpr::Response response = session.Post();
 
-  if (response.status_code != 200 && response.status_code != 201) {
-    // handle exception
-    error_handler(response);
-
-    // should not get to this point
-    throw elk::ELKException("Unhandled exception");
-  }
+  // check for errors
+  elk::check_for_error(response);
 }
