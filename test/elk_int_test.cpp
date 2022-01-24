@@ -174,6 +174,7 @@ TEST_CASE("BulkInsertBody") {
 
 TEST_CASE("UUID") {
   REQUIRE(!elk::uuid().empty());
+  std::cout << elk::uuid() << std::endl;
 }
 
 TEST_CASE("ClusterDetailsModel") {
@@ -207,4 +208,31 @@ TEST_CASE("BulkInsertBodyModel") {
   insert_body.create("test", "1234", data);
 
   REQUIRE(insert_body.to_x_ndjson() == output_json);
+}
+
+TEST_CASE("ClusterDetails") {
+  auto data = R"(
+{
+  "cluster_name": "elasticsearch",
+  "cluster_uuid": "ZRKLtNn-THO-iT7yEEPiWQ",
+  "name": "testbed",
+  "tagline": "You Know, for Search",
+  "version": {
+    "build_date": "2021-08-26T09:01:05.390870785Z",
+    "build_flavor": "default",
+    "build_hash": "66b55ebfa59c92c15db3f69a335d500018b3331e",
+    "build_snapshot": false,
+    "build_type": "deb",
+    "lucene_version": "8.9.0",
+    "minimum_index_compatibility_version": "6.0.0-beta1",
+    "minimum_wire_compatibility_version": "6.8.0",
+    "number": "7.14.1"
+  }
+}
+)"_json;
+
+  elk::ClusterDetails cluster_details(data);
+
+  REQUIRE(cluster_details.version().number() == "7.14.1");
+  REQUIRE(cluster_details.name() == "testbed");
 }

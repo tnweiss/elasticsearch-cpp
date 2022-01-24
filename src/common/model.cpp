@@ -53,7 +53,20 @@ nlohmann::json::json_pointer elk::Model::attr_pointer(const char *key) const {
   spdlog::debug(std::string("Model::_basePointer(") + _basePointer.to_string() + ")");
   spdlog::debug(std::string("get_key(") + key + ")");
 
-  nlohmann::json::json_pointer newPtr(_basePointer.to_string() + key);
+  // ensure base pointer ends with a /
+  std::string str_json_ptr(_basePointer);
+  if (str_json_ptr.empty() || str_json_ptr.at(str_json_ptr.size() - 1) != '/') {
+    str_json_ptr += "/";
+  }
+
+  // ensure the key does not start with a '/'
+  if (*key == '/') {
+    str_json_ptr += (key + 1);
+  } else {
+    str_json_ptr += key;
+  }
+
+  nlohmann::json::json_pointer newPtr(str_json_ptr);
 
   spdlog::debug(std::string("newPtr(") + newPtr.to_string() + ")");
   spdlog::debug("");

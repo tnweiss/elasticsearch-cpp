@@ -32,5 +32,24 @@ std::string elk::uuid() {
 }
 
 #else
-// linux
+
+#include "uuid/uuid.h"
+
+std::string elk::uuid() {
+  // instantiate uuid var
+  uuid_t uuid;
+
+  // generate random uuid
+  uuid_generate(uuid);
+
+  // uuid buffer
+  char uuid_out[40];
+
+  // convert hex to string
+  uuid_unparse(uuid, uuid_out);
+
+  return {uuid_out};
+}
+
+
 #endif

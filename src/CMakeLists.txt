@@ -12,4 +12,4 @@ add_library(${LIBRARY_NAME} STATIC
 add_library(elkClient::elkClient ALIAS ${LIBRARY_NAME})
 
 target_precompile_headers(${LIBRARY_NAME} PRIVATE elk_client_pch.h)
-target_link_libraries(${LIBRARY_NAME} PUBLIC spdlog::spdlog cpr::cpr)
+target_link_libraries(${LIBRARY_NAME} ${LIBRARY_LINK_LIBRARIES})
