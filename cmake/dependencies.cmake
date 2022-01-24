@@ -28,14 +28,20 @@ endif()
 message("-- Using Nlohmann Json Version: ${NLOHMANN_JSON_VERSION}")
 message(-----------------------------------------------------------)
 
+####### UUID for linux ##########
+if (UNIX)
+    set(LIBRARY_LINK_LIBRARIES "PRIVATE;uuid;${LIBRARY_LINK_LIBRARIES}")
+endif ()
 
 ####### Logging ##########
 FetchContent_Declare(spdlog GIT_REPOSITORY https://github.com/gabime/spdlog GIT_TAG v${SPDLOG_VERSION})
 FetchContent_MakeAvailable(spdlog)
+set(LIBRARY_LINK_LIBRARIES "PUBLIC;spdlog::spdlog;${LIBRARY_LINK_LIBRARIES}")
 
 ####### CRP Http ##########
 FetchContent_Declare(cpr GIT_REPOSITORY https://github.com/libcpr/cpr.git GIT_TAG ${CPR_VERSION})
 FetchContent_MakeAvailable(cpr)
+set(LIBRARY_LINK_LIBRARIES "PUBLIC;cpr::cpr;${LIBRARY_LINK_LIBRARIES}" )
 
 ####### JSON ##########
 file(DOWNLOAD

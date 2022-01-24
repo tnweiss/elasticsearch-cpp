@@ -174,6 +174,7 @@ TEST_CASE("BulkInsertBody") {
 
 TEST_CASE("UUID") {
   REQUIRE(!elk::uuid().empty());
+  std::cout << elk::uuid() << std::endl;
 }
 
 TEST_CASE("ClusterDetailsModel") {

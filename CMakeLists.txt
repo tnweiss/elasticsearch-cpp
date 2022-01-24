@@ -8,6 +8,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set(CMAKE_PROJECT_VERSION 0.0.1)
 
 ####### Handle Collecting Dependencies ##########
+set(LIBRARY_LINK_LIBRARIES "")
 include(cmake/dependencies.cmake)
 
 ####### Configure Library Name ##########
