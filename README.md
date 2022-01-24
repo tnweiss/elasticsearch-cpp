@@ -32,6 +32,8 @@ have to worry about installing them yourself.
 - [CATCH2 - Unit / Integration Testing](https://github.com/catchorg/Catch2)
 - [Magic Enum - Enum Reflection](https://github.com/Neargye/magic_enum)
 
+This project may require `uuid-dev` to build on linux.
+
 If you would like to override the default versions used in this project set the associated version 
 variable before importing this project.
 
