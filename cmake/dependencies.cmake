@@ -44,16 +44,22 @@ FetchContent_MakeAvailable(cpr)
 set(LIBRARY_LINK_LIBRARIES "PUBLIC;cpr::cpr;${LIBRARY_LINK_LIBRARIES}" )
 
 ####### JSON ##########
-file(DOWNLOAD
-        https://raw.githubusercontent.com/nlohmann/json/v${NLOHMANN_JSON_VERSION}/single_include/nlohmann/json.hpp
-        ${CMAKE_CURRENT_LIST_DIR}/../dependencies/include/nlohmann/json.hpp)
+if (NOT EXISTS ${CMAKE_CURRENT_LIST_DIR}/../dependencies/include/nlohmann/json.hpp)
+    file(DOWNLOAD
+            https://raw.githubusercontent.com/nlohmann/json/v${NLOHMANN_JSON_VERSION}/single_include/nlohmann/json.hpp
+            ${CMAKE_CURRENT_LIST_DIR}/../dependencies/include/nlohmann/json.hpp)
+endif()
 
 ####### Enum ##########.
-file(DOWNLOAD
-        https://raw.githubusercontent.com/Neargye/magic_enum/v${MAGIC_ENUM_VERSION}/include/magic_enum.hpp
-        ${CMAKE_CURRENT_LIST_DIR}/../dependencies/include/magic_enum.hpp)
+if (NOT EXISTS ${CMAKE_CURRENT_LIST_DIR}/../dependencies/include/magic_enum.hpp)
+    file(DOWNLOAD
+            https://raw.githubusercontent.com/Neargye/magic_enum/v${MAGIC_ENUM_VERSION}/include/magic_enum.hpp
+            ${CMAKE_CURRENT_LIST_DIR}/../dependencies/include/magic_enum.hpp)
+endif()
 
 ####### Unit Testing ##########.
-file(DOWNLOAD
-        https://raw.githubusercontent.com/catchorg/Catch2/v${CATCH_VERSION}/single_include/catch2/catch.hpp
-        ${CMAKE_CURRENT_LIST_DIR}/../dependencies/include/catch.hpp)
+if (NOT EXISTS ${CMAKE_CURRENT_LIST_DIR}/../dependencies/include/catch.hpp)
+    file(DOWNLOAD
+            https://raw.githubusercontent.com/catchorg/Catch2/v${CATCH_VERSION}/single_include/catch2/catch.hpp
+            ${CMAKE_CURRENT_LIST_DIR}/../dependencies/include/catch.hpp)
+endif()
