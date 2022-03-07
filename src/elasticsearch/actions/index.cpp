@@ -105,4 +105,7 @@ void bulk_update_index_action(const std::string& origin, const elk::ElkAuthentic
 
   // check for errors
   elk::check_for_error(response);
+
+  // log the response body
+  spdlog::debug("Bulk Update Response Body: \n{0}", response.text);
 }
