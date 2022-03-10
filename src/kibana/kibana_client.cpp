@@ -29,3 +29,7 @@ void elk::KibanaClient::delete_saved_object(elk::SavedObjectType type, const cha
 bool elk::KibanaClient::saved_object_exists(elk::SavedObjectType type, const char *id) const {
   return saved_object_exists_action(_origin, _authentication, type, id);
 }
+
+void elk::KibanaClient::import_object(std::string &object_export_content) const {
+  return import_object_action(_origin, _authentication, object_export_content);
+}
