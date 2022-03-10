@@ -63,6 +63,11 @@ class KibanaClient {
    */
   bool saved_object_exists(SavedObjectType type, const char* id) const;
 
+  /**
+   *
+   * @param object_export_content
+   */
+  void import_object(std::string& object_export_content) const;
  private:
   const std::string _origin;
   const elk::ElkAuthentication& _authentication;

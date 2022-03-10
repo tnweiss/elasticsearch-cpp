@@ -123,3 +123,34 @@ bool saved_object_exists_action(const std::string& origin, const elk::ElkAuthent
   // handle exception
   elk::handle_error(response);
 }
+
+void import_object_action(const std::string& origin, const elk::ElkAuthentication& authentication,
+                          std::string& object_export_content) {
+  // initialize the session
+  cpr::Session session;
+
+  // create the url and add it to the session
+  std::string url = origin + "/api/saved_objects/_import";
+  cpr::priv::set_option(session, cpr::Url(url));
+  spdlog::debug("Object Import URL: {0}", url);
+
+  // add authentication
+  authentication.add_authentication(session);
+
+  // set the request body type to json
+  cpr::Header headers({
+                          {"kbn-xsrf", "true"}
+                      });
+  cpr::priv::set_option(session, headers);
+
+  cpr::Multipart multipart{{"file", cpr::Buffer(object_export_content.begin(), object_export_content.end(), "file.ndjson")}};
+  cpr::priv::set_option(session, multipart);
+
+  // make the request
+  cpr::Response response = session.Post();
+
+  if (response.status_code == 200) return;
+
+  // handle exception
+  elk::handle_error(response);
+}

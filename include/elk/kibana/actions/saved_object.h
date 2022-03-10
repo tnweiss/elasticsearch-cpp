@@ -46,4 +46,13 @@ void delete_saved_object_action(const std::string& origin, const elk::ElkAuthent
 bool saved_object_exists_action(const std::string& origin, const elk::ElkAuthentication& authentication,
                                 elk::SavedObjectType type, const char* id);
 
+/**
+ *
+ * @param origin
+ * @param authentication
+ * @param object_export_content
+ */
+void import_object_action(const std::string& origin, const elk::ElkAuthentication& authentication,
+                          std::string& object_export_content);
+
 #endif //ELK_CPP_CLIENT_SRC_ELK_CLIENT_KIBANA_ACTIONS_SAVED_OBJECT_H_

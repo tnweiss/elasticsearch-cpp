@@ -4,6 +4,7 @@
 
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
+#include "kibana_dashboard_data.h"
 
 #include "elk/kibana/models/saved_object_type.h"
 #include "elk/common/authentication.h"
@@ -126,6 +127,15 @@ TEST_CASE("ElasticsearchKibanaClientTest") {
     request_body.create(bulk_insert_data());
 
     elastic_client().bulk_update_index(test_index().c_str(), request_body);
+  }
+
+  SECTION("ImportObject") {
+    std::string kib_dashboard(KIB_DASHBOARD);
+    kibana_client().import_object(kib_dashboard);
+  }
+
+  SECTION("DeleteImportedObject") {
+    kibana_client().delete_saved_object(elk::SavedObjectType::DASHBOARD, "test-dashboard");
   }
 
   SECTION("DeleteIndexPattern") {
