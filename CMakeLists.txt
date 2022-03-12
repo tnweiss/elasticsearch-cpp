@@ -22,7 +22,11 @@ endif()
 add_subdirectory(src)
 add_subdirectory(include)
 add_subdirectory(dependencies)
-add_subdirectory(test)
+
+if (NOT DEFINED ELK_CLIENT_SKIP_TESTS)
+    add_subdirectory(test)
+endif()
+
 
 ########## Libraries ##########
 # Include CMake helpers for package config files
@@ -53,8 +57,3 @@ install(
         DESTINATION
             ${CMAKE_INSTALL_LIBDIR}/cmake/elkClient
 )
-
-#install(EXPORT elkClientTargets
-#        FILE elkClientTargets.cmake
-#        NAMESPACE elkClient::
-#        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/elkClient)
