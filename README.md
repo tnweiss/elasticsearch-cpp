@@ -11,7 +11,7 @@ To include this library in your cmake project just add the following lines to yo
 
 ```cmake
 include(FetchContent)
-FetchContent_Declare(elkClient GIT_REPOSITORY https://github.com/tnweiss/elk-cpp GIT_TAG v0.0.1)
+FetchContent_Declare(elkClient GIT_REPOSITORY https://github.com/tnweiss/elk-cpp GIT_TAG v0.0.10)
 FetchContent_MakeAvailable(elkClient)
 ```
 

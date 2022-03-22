@@ -1,4 +1,4 @@
-target_include_directories(${LIBRARY_NAME}
+target_include_directories(elkClient
         PUBLIC
             include
             $<INSTALL_INTERFACE:include>

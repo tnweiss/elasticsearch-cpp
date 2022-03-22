@@ -36,7 +36,11 @@ endif ()
 ####### Logging ##########
 FetchContent_Declare(spdlog GIT_REPOSITORY https://github.com/gabime/spdlog GIT_TAG v${SPDLOG_VERSION})
 FetchContent_MakeAvailable(spdlog)
-set(LIBRARY_LINK_LIBRARIES "PUBLIC;spdlog::spdlog;${LIBRARY_LINK_LIBRARIES}")
+if (UNIX)
+    set(LIBRARY_LINK_LIBRARIES "PUBLIC;spdlog::spdlog;-fPIC;${LIBRARY_LINK_LIBRARIES}")
+else()
+    set(LIBRARY_LINK_LIBRARIES "PUBLIC;spdlog::spdlog;${LIBRARY_LINK_LIBRARIES}")
+endif()
 
 ####### CRP Http ##########
 FetchContent_Declare(cpr GIT_REPOSITORY https://github.com/libcpr/cpr.git GIT_TAG ${CPR_VERSION})
