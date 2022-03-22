@@ -3,3 +3,5 @@ cmake-build-*
 
 dependencies/*
 !dependencies/CMakeLists.txt
+
+include/elk/version.h

@@ -12,6 +12,13 @@ set(CMAKE_CXX_STANDARD 17)
 ####### Handle Collecting Dependencies ##########
 include(cmake/dependencies.cmake)
 
+####### Create Version Header ##########
+configure_file(
+        ${CMAKE_CURRENT_SOURCE_DIR}/cmake/version.h.in
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/elk/version.h
+        @ONLY
+)
+
 ########## Include the src subdirectory ##########
 add_subdirectory(src)
 add_subdirectory(include)
