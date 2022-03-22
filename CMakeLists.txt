@@ -1,6 +1,6 @@
 ####### Project ##########
 cmake_minimum_required (VERSION 3.5)
-project(elk-client VERSION 0.0.10)
+project(elkClient VERSION 0.0.10)
 
 ####### Import Install Filepaths ##########
 include(GNUInstallDirs)
