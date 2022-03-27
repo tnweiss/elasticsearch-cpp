@@ -32,7 +32,7 @@ if(${CMAKE_PROJECT_NAME} STREQUAL ${PROJECT_NAME})
 endif()
 
 ########## Install all Libraries ##########
-install(TARGETS elkClient spdlog cpr
+install(TARGETS elkClient spdlog cpr libcurl zlib
         EXPORT elkClientTargets
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
