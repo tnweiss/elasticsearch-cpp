@@ -1,6 +1,6 @@
 ####### Project ##########
 cmake_minimum_required (VERSION 3.5)
-project(elkClient VERSION 0.0.10)
+project(elkClient VERSION 0.0.11)
 
 ####### Import Install Filepaths ##########
 include(GNUInstallDirs)
@@ -22,7 +22,6 @@ configure_file(
 ########## Include the src subdirectory ##########
 add_subdirectory(src)
 add_subdirectory(include)
-add_subdirectory(dependencies)
 
 # If the project is not a submodule, add the test directory
 if(${CMAKE_PROJECT_NAME} STREQUAL ${PROJECT_NAME})

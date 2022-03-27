@@ -6,8 +6,8 @@
 #define ELK_CPP_CLIENT_SRC_ELK_CLIENT_ELASTICSEARCH_MODELS_VERSION_H_
 
 #include <utility>
+#include <string>
 
-#include "string"
 #include "elk/common/model.h"
 
 namespace elk {

@@ -5,12 +5,16 @@
 #ifndef ELK_CPP_CLIENT_SRC_ELK_CLIENT_COMMON_MODEL_H_
 #define ELK_CPP_CLIENT_SRC_ELK_CLIENT_COMMON_MODEL_H_
 
-#include "magic_enum.hpp"
-#include "string"
-#include "nlohmann/json.hpp"
+#include <string>
+
 #include "spdlog/spdlog.h"
+#include "elk/external/magic_enum.hpp"
+#include "elk/external/nlohmann/json.hpp"
+
+#include "elk/common/exceptions.h"
+
 #include "elk/elasticsearch/models/index_types.h"
-#include "exceptions.h"
+
 
 namespace elk {
 class Model {

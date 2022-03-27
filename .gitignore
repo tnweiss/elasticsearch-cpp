@@ -1,7 +1,13 @@
 cmake-build-*
 .idea
 
+# DEPRECATED TODO remove
 dependencies/*
 !dependencies/CMakeLists.txt
 
+# external header libraries
+include/elk/external
+test/external
+
+# project version file
 include/elk/version.h

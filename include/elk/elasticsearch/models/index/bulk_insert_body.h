@@ -8,8 +8,10 @@
 #include <memory>
 #include <vector>
 
-#include "nlohmann/json.hpp"
+#include "elk/external/nlohmann/json.hpp"
+
 #include "elk/common/model.h"
+
 #include "elk/elasticsearch/models/index/bulk_insert_action.h"
 #include "elk/elasticsearch/models/index/bulk_insert_data.h"
 

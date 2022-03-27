@@ -5,7 +5,7 @@
 #ifndef ELK_CLIENT_INCLUDE_ELK_ELASTICSEARCH_MODELS_INDEX_INDEX_ACTIONS_H_
 #define ELK_CLIENT_INCLUDE_ELK_ELASTICSEARCH_MODELS_INDEX_INDEX_ACTIONS_H_
 
-#include "magic_enum.hpp"
+#include "elk/external/magic_enum.hpp"
 
 namespace elk {
 
