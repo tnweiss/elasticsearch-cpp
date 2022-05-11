@@ -5,12 +5,14 @@
 #ifndef BENCHMARKR_SRC_BENCHMARKR_ELASTIC_RESPONSES_CLUSTER_DETAILS_H_
 #define BENCHMARKR_SRC_BENCHMARKR_ELASTIC_RESPONSES_CLUSTER_DETAILS_H_
 
-#include "string"
-#include "nlohmann/json.hpp"
+#include <string>
 #include <utility>
 
+#include "elk/external/nlohmann/json.hpp"
+
 #include "elk/common/model.h"
-#include "version.h"
+
+#include "elk/elasticsearch/models/version.h"
 
 
 namespace elk {

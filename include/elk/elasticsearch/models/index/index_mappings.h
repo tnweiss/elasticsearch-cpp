@@ -6,7 +6,8 @@
 #define ELK_CPP_CLIENT_SRC_ELK_CLIENT_ELASTICSEARCH_MODELS_INDEX_INDEX_MAPPINGS_H_
 
 #include "elk/common/model.h"
-#include "index_mapping_properties.h"
+
+#include "elk/elasticsearch/models/index/index_mapping_properties.h"
 
 namespace elk {
 

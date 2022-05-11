@@ -10,7 +10,8 @@
 #include <utility>
 
 #include "cpr/cpr.h"
-#include "magic_enum.hpp"
 #include "spdlog/spdlog.h"
+
+#include "elk/external/magic_enum.hpp"
 
 #endif //ELK_CLIENT_SRC_ELK_CLIENT_PCH_H_

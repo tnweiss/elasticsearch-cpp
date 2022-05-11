@@ -5,7 +5,7 @@
 #ifndef ELK_CPP_CLIENT_SRC_ELK_CLIENT_ELASTICSEARCH_MODELS_INDEX_TYPES_H_
 #define ELK_CPP_CLIENT_SRC_ELK_CLIENT_ELASTICSEARCH_MODELS_INDEX_TYPES_H_
 
-#include "magic_enum.hpp"
+#include "elk/external/magic_enum.hpp"
 
 // https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html
 enum class IndexType {

@@ -5,7 +5,8 @@
 #ifndef ELASTICSEARCH_CPP_SRC_ELASTICSEARCH_CLIENT_ELASTIC_CLIENT_H_
 #define ELASTICSEARCH_CPP_SRC_ELASTICSEARCH_CLIENT_ELASTIC_CLIENT_H_
 
-#include "string"
+#include <string>
+
 #include "elk/common/authentication.h"
 
 #include "elk/elasticsearch/models/cluster_details.h"

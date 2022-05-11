@@ -5,8 +5,10 @@
 #ifndef ELK_CPP_CLIENT_SRC_ELK_CLIENT_KIBANA_KIBANA_CLIENT_H_
 #define ELK_CPP_CLIENT_SRC_ELK_CLIENT_KIBANA_KIBANA_CLIENT_H_
 
-#include "string"
+#include <string>
+
 #include "elk/common/authentication.h"
+
 #include "elk/kibana/models/create_saved_object_body.h"
 #include "elk/kibana/models/create_saved_object_response.h"
 #include "elk/kibana/models/saved_object_type.h"

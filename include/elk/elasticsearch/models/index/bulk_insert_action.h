@@ -7,6 +7,7 @@
 
 #include "elk/common/model.h"
 #include "elk/common/keys.h"
+
 #include "elk/elasticsearch/models/index/index_actions.h"
 
 namespace elk {

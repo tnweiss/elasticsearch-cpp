@@ -1,3 +1,7 @@
+####### External Directories ##########
+set(SRC_EXTERNAL_DIR "${CMAKE_CURRENT_LIST_DIR}/../include/elk/external")
+set(TEST_EXTERNAL_DIR "${CMAKE_CURRENT_LIST_DIR}/../test/external")
+
 include(FetchContent)
 
 ####### Set default versions ##########
@@ -48,22 +52,22 @@ FetchContent_MakeAvailable(cpr)
 set(LIBRARY_LINK_LIBRARIES "PUBLIC;cpr::cpr;${LIBRARY_LINK_LIBRARIES}" )
 
 ####### JSON ##########
-if (NOT EXISTS ${CMAKE_CURRENT_LIST_DIR}/../dependencies/include/nlohmann/json.hpp)
+if (NOT EXISTS ${SRC_EXTERNAL_DIR}/nlohmann/json.hpp)
     file(DOWNLOAD
             https://raw.githubusercontent.com/nlohmann/json/v${NLOHMANN_JSON_VERSION}/single_include/nlohmann/json.hpp
-            ${CMAKE_CURRENT_LIST_DIR}/../dependencies/include/nlohmann/json.hpp)
+            ${SRC_EXTERNAL_DIR}/nlohmann/json.hpp)
 endif()
 
 ####### Enum ##########.
-if (NOT EXISTS ${CMAKE_CURRENT_LIST_DIR}/../dependencies/include/magic_enum.hpp)
+if (NOT EXISTS ${SRC_EXTERNAL_DIR}/magic_enum.hpp)
     file(DOWNLOAD
             https://raw.githubusercontent.com/Neargye/magic_enum/v${MAGIC_ENUM_VERSION}/include/magic_enum.hpp
-            ${CMAKE_CURRENT_LIST_DIR}/../dependencies/include/magic_enum.hpp)
+            ${SRC_EXTERNAL_DIR}/magic_enum.hpp)
 endif()
 
 ####### Unit Testing ##########.
-if (NOT EXISTS ${CMAKE_CURRENT_LIST_DIR}/../dependencies/include/catch.hpp)
+if (NOT EXISTS ${TEST_EXTERNAL_DIR}/catch.hpp)
     file(DOWNLOAD
             https://raw.githubusercontent.com/catchorg/Catch2/v${CATCH_VERSION}/single_include/catch2/catch.hpp
-            ${CMAKE_CURRENT_LIST_DIR}/../dependencies/include/catch.hpp)
+            ${TEST_EXTERNAL_DIR}/catch.hpp)
 endif()

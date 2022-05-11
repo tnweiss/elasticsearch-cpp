@@ -6,7 +6,8 @@
 #define ELK_CPP_CLIENT_SRC_ELK_CLIENT_KIBANA_MODELS_CREATE_SAVED_OBJECT_BODY_H_
 
 #include "elk/common/model.h"
-#include "saved_object_attributes.h"
+
+#include "elk/kibana/models/saved_object_attributes.h"
 
 namespace elk {
 class CreateSavedObjectBody: public Model {

@@ -3,16 +3,19 @@
 //
 
 #define CATCH_CONFIG_MAIN
-#include "catch.hpp"
-#include "kibana_dashboard_data.h"
+#include "external/catch.hpp"
 
-#include "elk/kibana/models/saved_object_type.h"
-#include "elk/common/authentication.h"
 #include "elk/common/utility.h"
-#include "elk/elasticsearch/elasticsearch_client.h"
+#include "elk/common/authentication.h"
+
 #include "elk/kibana/kibana_client.h"
+#include "elk/kibana/models/saved_object_type.h"
+
+#include "elk/elasticsearch/elasticsearch_client.h"
 #include "elk/elasticsearch/models/create_index_body.h"
 #include "elk/elasticsearch/models/index/bulk_insert_body.h"
+
+#include "kibana_dashboard_data.h"
 
 // TEST DATA
 static const char* USERNAME = "elastic";

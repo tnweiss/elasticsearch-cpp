@@ -5,8 +5,10 @@
 #ifndef ELK_CPP_CLIENT_SRC_ELK_CLIENT_ELASTICSEARCH_ACTIONS_CLUSTER_DETAILS_H_
 #define ELK_CPP_CLIENT_SRC_ELK_CLIENT_ELASTICSEARCH_ACTIONS_CLUSTER_DETAILS_H_
 
-#include "string"
+#include <string>
+
 #include "elk/common/authentication.h"
+
 #include "elk/elasticsearch/models/cluster_details.h"
 
 namespace elk {
